@@ -1,0 +1,54 @@
+.contactList {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+}
+.contact {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #cccccc74;
+  display: flex;
+  justify-content: start;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  margin-bottom: 15px;
+}
+.contactIcon {
+  width: 5%;
+  height: 100%;
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(65, 85, 129);
+}
+.info {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.name {
+  font-size: 17px;
+}
+.email {
+  color: gray;
+  font-size: 12px;
+}
+.removeIcon {
+  width: 5%;
+  height: 100%;
+  color: #e11d48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.removeIcon:hover {
+  background-color: #cccccc77;
+}

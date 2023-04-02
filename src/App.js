@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import AddContact from "./components/AddContact/AddContact";
+import ContactList from "./components/ContactList/ContactList";
+import { useState, useEffect } from "react";
+import {
+  getContacts,
+  postContact,
+  deleteContact,
+} from "./services/requestService";
 
 function App() {
+  const [contacts, setContacts] = useState([]);
+  useEffect(() => {
+    console.log("cdm");
+    getContacts()
+      .then(({ data }) => {
+        setContacts(data);
+      })
+      .catch((err) => {});
+  }, []);
+
+  const addNewContactHandler = (newContact) => {
+    postContact(newContact)
+      .then((res) => {
+        getContacts()
+          .then((res) => setContacts(res.data))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  };
+  const deleteHandler = (id) => {
+    deleteContact(id)
+      .then((res) => {
+        getContacts()
+          .then(({ data }) => setContacts(data))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <AddContact addNewContactHandler={addNewContactHandler} />
+      <ContactList onDelete={deleteHandler} contacts={contacts} />
     </div>
   );
 }
