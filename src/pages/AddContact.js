@@ -1,12 +1,24 @@
 import styles from "./AddContact.module.css";
 import { useState } from "react";
+import { postContact } from "../services/requestService";
+import { useNavigate, Link } from "react-router-dom";
 
-const AddContact = ({ addNewContactHandler }) => {
+const AddContact = () => {
   const [newContact, setNewContact] = useState({ name: "", email: "" });
+  const navigate = useNavigate();
+
   const changeHandler = (e) => {
     setNewContact({ ...newContact, [e.target.name]: e.target.value });
     console.log(newContact);
   };
+  const addNewContactHandler = (newContact) => {
+    postContact(newContact)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (!newContact.name || !newContact.email) {
@@ -14,6 +26,7 @@ const AddContact = ({ addNewContactHandler }) => {
     } else {
       addNewContactHandler(newContact);
       setNewContact({ name: "", email: "" });
+      navigate("/");
     }
   };
   return (
@@ -45,6 +58,7 @@ const AddContact = ({ addNewContactHandler }) => {
           Add
         </button>
       </form>
+      <Link to="/">go back to contacts list</Link>
     </section>
   );
 };
