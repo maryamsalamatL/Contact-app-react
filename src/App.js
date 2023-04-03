@@ -24,7 +24,11 @@ function App() {
     postContact(newContact)
       .then((res) => {
         getContacts()
-          .then((res) => setContacts(res.data))
+          .then((res) => {
+            setContacts(res.data);
+            localStorage.setItem("contacts", JSON.stringify(res.data));
+          })
+
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
@@ -33,7 +37,10 @@ function App() {
     deleteContact(id)
       .then((res) => {
         getContacts()
-          .then(({ data }) => setContacts(data))
+          .then(({ data }) => {
+            setContacts(data);
+            localStorage.setItem("contacts", JSON.stringify(data));
+          })
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
