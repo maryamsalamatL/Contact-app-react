@@ -1,8 +1,8 @@
 import "./App.css";
-import Header from "./components/Header";
-import AddContact from "./components/AddContact/AddContact";
-import ContactList from "./components/ContactList/ContactList";
+import Layout from "./layout/Layout";
 import { useState, useEffect } from "react";
+import routes from "./routes";
+import { Route, Routes } from "react-router-dom";
 import {
   getContacts,
   postContact,
@@ -20,37 +20,18 @@ function App() {
       .catch((err) => {});
   }, []);
 
-  const addNewContactHandler = (newContact) => {
-    postContact(newContact)
-      .then((res) => {
-        getContacts()
-          .then((res) => {
-            setContacts(res.data);
-            localStorage.setItem("contacts", JSON.stringify(res.data));
-          })
-
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => console.log(err));
-  };
-  const deleteHandler = (id) => {
-    deleteContact(id)
-      .then((res) => {
-        getContacts()
-          .then(({ data }) => {
-            setContacts(data);
-            localStorage.setItem("contacts", JSON.stringify(data));
-          })
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => console.log(err));
-  };
-
   return (
     <div className="App">
-      <Header />
+      <Layout>
+        <Routes>
+          {routes.map((route) => (
+            <Route {...route} />
+          ))}
+        </Routes>
+      </Layout>
+      {/* <Header />
       <AddContact addNewContactHandler={addNewContactHandler} />
-      <ContactList onDelete={deleteHandler} contacts={contacts} />
+      <ContactList onDelete={deleteHandler} contacts={contacts} /> */}
     </div>
   );
 }

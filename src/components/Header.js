@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
-    <header className="header">
-      <h1>Contact Manager</h1>
+    <header>
+      <div className="header">
+        <h1>Contact Manager</h1>
+      </div>
     </header>
   );
 };
