@@ -1,8 +1,9 @@
-import { FaUserCircle, FaTrashAlt } from "react-icons/fa";
 import styles from "./ContactList.module.css";
 import { getContacts, deleteContact } from "../services/requestService";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Contact from "../components/Contact";
+
 const ContactList = () => {
   const [contacts, setContacts] = useState([]);
   useEffect(() => {
@@ -36,22 +37,7 @@ const ContactList = () => {
         </button>
       </div>
       {contacts.map((c) => (
-        <div key={c.id} className={styles.contact}>
-          <span className={styles.contactIcon}>
-            <FaUserCircle />
-          </span>
-          <div className={styles.info}>
-            <p className={styles.name}>{c.name}</p>
-            <span className={styles.email}>{c.email}</span>
-          </div>
-          <div
-            className={styles.removeIcon}
-            onClick={() => deleteHandler(c.id)}
-          >
-            <FaTrashAlt />
-          </div>
-          <Link to={`contact/${c.id}`}>edit</Link>
-        </div>
+        <Contact contact={c} deleteHandler={deleteHandler} styles={styles} />
       ))}
     </div>
   );

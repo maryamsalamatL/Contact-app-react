@@ -1,12 +1,12 @@
 import ContactList from "./pages/ContactList";
 import AddContact from "./pages/AddContact";
 import NotFound from "./components/NotFound";
-import EditContact from "./pages/EditContact";
+import ContactDetail from "./pages/ContactDetail";
 
 const routes = [
   { path: "/", element: <ContactList /> },
   { path: "/add-contact", element: <AddContact /> },
-  { path: "/contact/:id", element: <EditContact /> },
+  { path: "/user/:id", element: <ContactDetail /> },
   { path: "*", element: <NotFound /> },
 ];
 export default routes;

@@ -10,7 +10,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 .addBtn {
@@ -57,10 +57,13 @@
   color: rgb(65, 85, 129);
 }
 .info {
-  width: 90%;
+  width: 85%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.contact:hover {
+  background-color: #cccccc37;
 }
 .name {
   font-size: 17px;
@@ -69,14 +72,20 @@
   color: gray;
   font-size: 12px;
 }
-.removeIcon {
+.icons {
   width: 5%;
   height: 100%;
-  color: #e11d48;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.removeIcon:hover {
+.removeIcon {
+  color: #e11d48;
+}
+.editIcon {
+  color: #059669;
+}
+.icons:hover {
   background-color: #cccccc77;
 }
