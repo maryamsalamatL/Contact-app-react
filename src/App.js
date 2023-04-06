@@ -25,7 +25,7 @@ function App() {
       <Layout>
         <Routes>
           {routes.map((route) => (
-            <Route {...route} />
+            <Route {...route} key={route.path} />
           ))}
         </Routes>
       </Layout>
