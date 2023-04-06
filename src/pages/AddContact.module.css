@@ -50,3 +50,6 @@ form {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+.addBtn:hover {
+  background-color: #01b3cf;
+}
