@@ -22,7 +22,10 @@ const Contact = ({ contact, deleteHandler, styles }) => {
       >
         <FaTrashAlt />
       </div>
-      <div className={`${styles.icons} ${styles.editIcon}`}>
+      <div
+        className={`${styles.icons} ${styles.editIcon}`}
+        onClick={() => navigate(`edit/${id}`, { state: { contact } })}
+      >
         <FaEdit />
       </div>
     </div>

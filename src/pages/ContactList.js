@@ -37,7 +37,12 @@ const ContactList = () => {
         </button>
       </div>
       {contacts.map((c) => (
-        <Contact contact={c} deleteHandler={deleteHandler} styles={styles} />
+        <Contact
+          contact={c}
+          deleteHandler={deleteHandler}
+          styles={styles}
+          key={c.id}
+        />
       ))}
     </div>
   );

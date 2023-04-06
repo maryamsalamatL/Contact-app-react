@@ -2,6 +2,7 @@ import styles from "./AddContact.module.css";
 import { useState } from "react";
 import { postContact } from "../services/requestService";
 import { useNavigate, Link } from "react-router-dom";
+import Form from "../components/Form";
 
 const AddContact = () => {
   const [newContact, setNewContact] = useState({ name: "", email: "" });
@@ -9,7 +10,6 @@ const AddContact = () => {
 
   const changeHandler = (e) => {
     setNewContact({ ...newContact, [e.target.name]: e.target.value });
-    console.log(newContact);
   };
   const addNewContactHandler = (newContact) => {
     postContact(newContact)
@@ -32,32 +32,11 @@ const AddContact = () => {
   return (
     <section>
       <h3 className={styles.title}>Add Contact</h3>
-      <form onSubmit={submitHandler}>
-        <div className={styles.formControl}>
-          <label className={styles.label}>Name</label>
-          <input
-            className={styles.input}
-            placeholder="name"
-            onChange={changeHandler}
-            name="name"
-            value={newContact.name}
-          ></input>
-        </div>
-        <div className={styles.formControl}>
-          <label className={styles.label}>Email</label>
-          <input
-            className={styles.input}
-            placeholder="email"
-            onChange={(e) => changeHandler(e)}
-            name="email"
-            value={newContact.email}
-            type="email"
-          ></input>
-        </div>
-        <button className={styles.addBtn} type="submit">
-          Add
-        </button>
-      </form>
+      <Form
+        contact={newContact}
+        submitHandler={submitHandler}
+        changeHandler={changeHandler}
+      />
       <Link to="/">go back to contacts list</Link>
     </section>
   );
