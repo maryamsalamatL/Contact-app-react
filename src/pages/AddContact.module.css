@@ -1,4 +1,4 @@
-section {
+.section {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -9,4 +9,19 @@ section {
 
 .title {
   margin-bottom: 20px;
+}
+.link {
+  text-decoration: none;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 25px;
+}
+.link p {
+  margin-left: 3px;
+}
+@media only screen and (max-width: 600px) {
+  .section {
+    width: 100%;
+    padding: 10px;
+  }
 }

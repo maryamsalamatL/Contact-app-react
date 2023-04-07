@@ -16,17 +16,19 @@ const Contact = ({ contact, deleteHandler, styles }) => {
         <p className={styles.name}>{name}</p>
         <span className={styles.email}>{email}</span>
       </div>
-      <div
-        className={`${styles.icons} ${styles.removeIcon}`}
-        onClick={() => deleteHandler(id)}
-      >
-        <FaTrashAlt />
-      </div>
-      <div
-        className={`${styles.icons} ${styles.editIcon}`}
-        onClick={() => navigate(`edit/${id}`, { state: { contact } })}
-      >
-        <FaEdit />
+      <div className={styles.iconController}>
+        <div
+          className={`${styles.icons} ${styles.removeIcon}`}
+          onClick={() => deleteHandler(id)}
+        >
+          <FaTrashAlt />
+        </div>
+        <div
+          className={`${styles.icons} ${styles.editIcon}`}
+          onClick={() => navigate(`edit/${id}`, { state: { contact } })}
+        >
+          <FaEdit />
+        </div>
       </div>
     </div>
   );

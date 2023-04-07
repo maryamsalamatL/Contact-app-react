@@ -1,0 +1,46 @@
+.section {
+  width: 80%;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #cccccc76;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  color: #444;
+  background-color: #cccccc1e;
+}
+.section h2 {
+  margin-bottom: 15px;
+}
+.detail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 20px;
+}
+
+.link {
+  text-decoration: none;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 25px;
+}
+.link p {
+  margin-left: 3px;
+}
+@media only screen and (max-width: 600px) {
+  .section {
+    width: 95%;
+    margin: 30px;
+    padding: 5px;
+  }
+  .detail {
+    font-size: 15px;
+  }
+  .detail .email {
+    font-size: 12px;
+  }
+}

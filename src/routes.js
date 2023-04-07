@@ -1,6 +1,6 @@
 import ContactList from "./pages/ContactList";
 import AddContact from "./pages/AddContact";
-import NotFound from "./components/NotFound";
+import NotFound from "./pages/NotFound";
 import ContactDetail from "./pages/ContactDetail";
 import EditComponent from "./pages/EditContact";
 

@@ -3,22 +3,28 @@ import { getContacts, deleteContact } from "../services/requestService";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Contact from "../components/Contact";
+import Search from "../components/Search";
 
 const ContactList = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(null);
+  const [allContacts, setAllContacts] = useState(null);
   useEffect(() => {
-    console.log("cdm");
     getContacts()
-      .then(({ data }) => setContacts(data))
+      .then(({ data }) => {
+        setContacts(data);
+        setAllContacts(data);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   const deleteHandler = (id) => {
     deleteContact(id)
       .then((res) => {
+        const filteredContacts = contacts.filter((c) => c.id !== id);
+        setContacts(filteredContacts);
         getContacts()
           .then(({ data }) => {
-            setContacts(data);
+            setAllContacts(data);
             localStorage.setItem("contacts", JSON.stringify(data));
           })
           .catch((err) => console.log(err));
@@ -36,14 +42,19 @@ const ContactList = () => {
           </Link>
         </button>
       </div>
-      {contacts.map((c) => (
-        <Contact
-          contact={c}
-          deleteHandler={deleteHandler}
-          styles={styles}
-          key={c.id}
-        />
-      ))}
+      <Search allContacts={allContacts} setContacts={setContacts} />
+      {contacts ? (
+        contacts.map((c) => (
+          <Contact
+            contact={c}
+            deleteHandler={deleteHandler}
+            styles={styles}
+            key={c.id}
+          />
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };

@@ -1,0 +1,35 @@
+.formController {
+  width: 100%;
+  margin: 20px;
+}
+.formController form {
+  width: 100%;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  border: 1px solid #cccccc74;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  padding-left: 5px;
+}
+.formController input {
+  width: 100%;
+  height: 35px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: inherit;
+  -webkit-border-radius: inherit;
+  -moz-border-radius: inherit;
+  -ms-border-radius: inherit;
+  -o-border-radius: inherit;
+}
+.icon {
+  color: #444;
+}
+@media only screen and (max-width: 600px) {
+}

@@ -1,6 +1,6 @@
 import styles from "./Form.module.css";
 
-const Form = ({ submitHandler, changeHandler, contact }) => {
+const Form = ({ submitHandler, changeHandler, contact, btn }) => {
   return (
     <form onSubmit={submitHandler}>
       <div className={styles.formControl}>
@@ -25,7 +25,7 @@ const Form = ({ submitHandler, changeHandler, contact }) => {
         ></input>
       </div>
       <button className={styles.addBtn} type="submit">
-        Add
+        {btn}
       </button>
     </form>
   );
